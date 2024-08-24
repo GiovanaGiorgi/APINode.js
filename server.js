@@ -8,7 +8,7 @@ app.use('/api', rotas);
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${port}`));
+app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
 
 // const cepRegex = /^[0-9]{5}-?[09]{3}$/;
 
