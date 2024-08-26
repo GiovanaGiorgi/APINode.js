@@ -91,8 +91,8 @@ exports.deleteEndereco = async (req, res) => {
         res.status(500).json({ error: 'Erro ao deletar endereço', details: error.message});
     }
 
-    async function buscarEnderecoPorCep(req, res) {
-        try {
+async function buscarEnderecoPorCep(req, res) {
+    try {
           const { cep } = req.params;
           const cepRegex = /^[0-9]{5}-?[0-9]{3}$/;
       
@@ -114,7 +114,7 @@ exports.deleteEndereco = async (req, res) => {
           const novoEndereco = await Endereco.create({
             Cep,
             Logradouro,
-            Numero,
+            Numero: req.body.Numero,
             Complemento,
             Bairro,
             Cidade,
@@ -123,9 +123,10 @@ exports.deleteEndereco = async (req, res) => {
           });
       
           res.status(201).json(novoEndereco);
-        } catch (error) {
+    } catch (error) {
           console.error('Erro ao criar o endereço', error);
           res.status(500).json({ error: 'Erro ao criar o endereço', details: error.message });
-        }
+    }
+        exports.buscarEnderecoPorCep = buscarEnderecoPorCep;
     }
 };
